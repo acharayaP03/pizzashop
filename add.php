@@ -73,7 +73,7 @@ if (isset($_POST['submit'])) {
 <section class="container grey-text">
     <h4 class="center">Add a Pizza</h4>
 
-    <form action="add.php" method="POST" class="white" autocomplete="off">
+    <form action="<?php $_SERVER['PHP_SELF']; ?>" method="POST" class="white" autocomplete="off">
         <label for="email">You Email</label>
         <input type="text" name="email" id="email" value="<?= htmlspecialchars($email) ?>">
         <div class="red-text">

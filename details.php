@@ -58,7 +58,7 @@ if (isset($_GET['id'])) {
                 </div>
                 <div class="card-action"> 
                     <!-- Delete pizza if exist -->
-                    <form action="details.php" method="POST">
+                    <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST">
                         <input type="hidden" name="id_to_delete" value="<?= $pizza['id'] ?>">
                         <input type="submit" name="delete" value="Delete" class="btn brand z-depth-0">
                     </form>
