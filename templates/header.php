@@ -4,8 +4,10 @@
     if($_SERVER['QUERY_STRING']  == 'noname'){
         session_unset();
     }
-    $name = $_SESSION['name'];
+    $name = $_SESSION['name'] ?? 'Guest';
 
+
+    $gender = $_COOKIE['gender'] ?? 'Unknown'
 ?>
 
 
@@ -93,8 +95,9 @@
         <div class="container">
             <a href="index.php" class="brand-logo brand-text">Awesome Pizza</a>
             <ul id="nav-mobile" class="right hide-on-small-and-down">
-                <?php if (isset($name)) : ?>
+                <?php if ($name !== 'Guest') : ?>
                     <li class="brand-text">Hello, <?= htmlspecialchars($name) ?></li>
+                    <li class="brand-text">(<?= htmlspecialchars($gender) ?>)</li>
                 <?php else : ?>
                     <li><a href="session.php" class="brand-text">Enter Name</a></li>
                 <?php endif; ?>

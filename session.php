@@ -1,15 +1,18 @@
 <?php
-    if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
 
-        //start the session if there is post.
-        session_start();
+    //set cookiew
+    setcookie('gender', $_POST['gender'], time() + 86400);
 
-        $_SESSION['name'] = $_POST['name'];
+    //start the session if there is post.
+    session_start();
 
-        //echo $_SESSION['name'];
+    $_SESSION['name'] = $_POST['name'];
 
-        header('Location: index.php');
-    }
+    //echo $_SESSION['name'];
+
+    header('Location: index.php');
+}
 
 ?>
 
@@ -24,6 +27,15 @@
             <div class="input-field col s12 md6">
                 <i class="material-icons prefix">account_circle</i>
                 <input id="icon_prefix" type="text" name="name" class="validate">
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 md6">
+                <select name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                <label>Materialize Select</label>
             </div>
         </div>
         <div class="card-action center">
