@@ -1,7 +1,21 @@
+<?php
+
+    session_start();
+    if($_SERVER['QUERY_STRING']  == 'noname'){
+        session_unset();
+    }
+    $name = $_SESSION['name'];
+
+?>
+
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <title>pizzashop</title>
@@ -79,6 +93,11 @@
         <div class="container">
             <a href="index.php" class="brand-logo brand-text">Awesome Pizza</a>
             <ul id="nav-mobile" class="right hide-on-small-and-down">
+                <?php if (isset($name)) : ?>
+                    <li class="brand-text">Hello, <?= htmlspecialchars($name) ?></li>
+                <?php else : ?>
+                    <li><a href="session.php" class="brand-text">Enter Name</a></li>
+                <?php endif; ?>
                 <li><a href="add.php" class="btn brand z-depth-0">Add a pizza</a></li>
             </ul>
         </div>
